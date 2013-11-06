@@ -1,0 +1,376 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css">-->
+<link href="css/jquery.mobile.structure-1.3.2.css" rel="stylesheet" type="text/css"/>
+<!--<link href="css/jquery.mobile-1.3.2.css" rel="stylesheet" type="text/css"/>-->
+<link rel="stylesheet" href="css/you-jqm-themes.css">
+<link rel="stylesheet" href="css/yowu.css">
+
+<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>  
+<script>  
+$(document).bind("mobileinit", function()  
+{  
+   if (navigator.userAgent.indexOf("Android") != -1)  
+   {  
+     $.mobile.defaultPageTransition = 'none';  
+     $.mobile.defaultDialogTransition = 'none';  
+   }  
+});  
+</script>  
+
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.slides.min.js"></script>
+<script src="js/jquery.mobile-1.3.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".cart_list li").bind("swipeleft", function(event) {
+		$(this).children(".cart_del").show();
+		$(this).children(".cart_del").animate({ 
+			width: "70px"
+		}, 500 );
+	});
+	$(".cart_bj").bind("click", function(event) {
+		$(".cart_del").animate({ 
+			width: "70px"
+		}, 500 );
+	});
+  	
+	$(".cart_del").bind("click", function(event){
+		$(this).parent("li").remove();									  
+	});
+	
+	$("#cart").bind("click", function(event){
+		$(".cart_list li .cart_del").hide().animate({ 
+			width: "0"
+		}, 500 );
+	});
+	
+	$(".cart_list li .cart_del, .cart_bj").click(function(event){
+		event.stopPropagation();
+	})
+});
+</script>
+
+<script>
+	$( document ).on( "pageinit", "#list", function() {
+		$( document ).on( "swipeleft swiperight", "#list", function( e ) {
+			// We check if there is no open panel on the page because otherwise
+			// a swipe to close the left panel would also open the right panel (and v.v.).
+			// We do this by checking the data that the framework stores on the page element (panel: open).
+			if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
+				if ( e.type === "swipeleft"  ) {
+					$( "#right-panel" ).panel( "open" );
+				}
+			}
+		});
+	});
+</script>
+<script>
+$(document).ready(function(){
+	$('#slides').slidesjs({
+		width: 350,
+		height: 420
+	});
+});
+</script>
+</head>
+
+<body>
+<!--首页-->
+<div data-role="page" id="index">
+	<div class="header" data-role="header">
+    	<h1 class="logo float_l"><img src="http://img.meicicdn.com/skin/yowu/pic/yowu_logo.gif" alt="yowu 优物网" /></h1>
+        <div class="float_r head_search clearfix"><input type="text" value="" placeholder="搜索商品关键词" style="padding:5px; height:24px;" /><button class="head_search_ico"></button></div>
+    </div>
+    
+    <div class="main_index" data-role="content">
+        <div id="slider" style="width:100%;">
+        	<div class="home_large">
+            	<a href="#list" data-transition="slide"><img width="310" height="165" src="http://img.meicicdn.com/mc/wap/20131104/homepage02.jpg" alt="" /></a>
+            </div>
+        </div>
+        <div class="home_large">
+            <a class="float_l" href="#list" data-transition="slide"><img width="152" height="100" src="http://img.meicicdn.com/skin/df/wap/man01.jpg" alt="" /></a>
+            <a class="float_r" href="#list" data-transition="slide"><img width="153" height="100" src="http://img.meicicdn.com/skin/df/wap/accessories01.jpg" alt="" /></a>
+        </div>
+        <div class="home_large">
+            <a class="float_l" href="#list" data-transition="slide"><img width="185" height="100" src="http://img.meicicdn.com/skin/df/wap/shoes01.jpg" alt="" /></a>
+            <a class="float_r" href="#list" data-transition="slide"><img width="120" height="100" src="http://img.meicicdn.com/skin/df/wap/sales01.jpg" alt="" /></a>
+        </div>
+    </div>
+    
+    <div class="footer" data-role="footer">
+		<div data-role="navbar">
+            <ul>
+                <li><a class="f_index" href="#index" data-transition="none">首页</a></li>
+                <li><a class="f_brands" href="#brands" data-transition="none">品牌</a></li>
+                <li><a class="f_cart" href="#cart" data-transition="none">购物袋</a></li>
+                <li><a class="f_account" href="#account" data-transition="none">我的优物</a></li>
+            </ul>
+		</div>
+    </div>
+</div>
+
+<!--列表-->
+<div data-role="page" id="list">
+	<div class="header" data-role="header">
+    	<a class="header_l" href="index.html" data-rel="back">返回</a>
+    	<h1 class="header_tit">男士</h1>
+        <a class="header_r" href="#right-panel" data-shadow="false" data-iconshadow="false">筛选</a>
+    </div>
+    
+    <div class="main" data-role="content">
+        <div class="filter clearfix">
+        	<div class="float_l"><a href="#">上架时间</a></div>
+            <div class="float_r"><a href="#">价格</a></div>
+        </div>
+        <div class="pro_list">
+        	<ul class="clearfix">
+            	<li>
+                	<a class="pro_img" href="#product" title="" data-transition="slide">
+                    	<img width="140" src="http://img.meicicdn.com/p/24/023883/q-023883-1.jpg" />
+                    	<p class="pro_b_p">Givenchy<br />￥8300.00</p>
+                    </a>
+                </li>
+                <li>
+                	<a class="pro_img" href="#product" title="" data-transition="slide">
+                    	<img width="140" src="http://img.meicicdn.com/p/24/023883/q-023883-1.jpg" />
+                    	<p class="pro_b_p">Givenchy<br />￥8300.00</p>
+                    </a>
+                </li>
+                <li>
+                	<a class="pro_img" href="#product" title="" data-transition="slide">
+                    	<img width="140" src="http://img.meicicdn.com/p/24/023883/q-023883-1.jpg" />
+                    	<p class="pro_b_p">Givenchy<br />￥8300.00</p>
+                    </a>
+                </li>
+                <li>
+                	<a class="pro_img" href="#product" title="" data-transition="slide">
+                    	<img width="140" src="http://img.meicicdn.com/p/24/023883/q-023883-1.jpg" />
+                    	<p class="pro_b_p">Givenchy<br />￥8300.00</p>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+    <!--<div data-role="panel" id="right-panel" data-display="overlay" data-position="right" data-theme="c" style="width:100%;">
+        <p>分类</p>
+        <p>价格</p>
+        <p>颜色</p>
+        <p>设计师品牌</p>
+        <a href="#" data-rel="close" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="right">Close</a>
+    </div>-->
+    <div class="footer" data-role="footer">
+       <div data-role="navbar">
+            <ul>
+                <li><a class="f_index" href="#index" data-transition="none">首页</a></li>
+                <li><a class="f_brands" href="#brands" data-transition="none">品牌</a></li>
+                <li><a class="f_cart" href="#cart" data-transition="none">购物袋</a></li>
+                <li><a class="f_account" href="#account" data-transition="none">我的优物</a></li>
+            </ul>
+		</div>
+    </div>
+</div>
+
+<!--商品详情页-->
+<div data-role="page" id="product">
+	<div class="header" data-role="header">
+    	<a class="header_l" href="index.html" data-rel="back">返回</a>
+    	<h1 class="header_tit">Dolce&Gabbana 杜嘉班纳</h1>
+        <a class="header_r" href="javascript:void(0);">分享</a>
+    </div>
+    
+    <div class="main" data-role="content">
+    	<div class="pad10">
+        	<p class="pro_des">Neil Barrett 尼奥·贝奈特 多色波浪形竖纹图案全棉男士长袖衬衫</p>
+            <div id="slides">
+                <img src="http://img.meicicdn.com/p/13/012027/d-012027-1.jpg" width="250" />
+                <img src="http://img.meicicdn.com/p/13/012027/d-012027-2.jpg" width="250" />
+                <img src="http://img.meicicdn.com/p/13/012027/d-012027-3.jpg" width="250" />
+            </div>
+            <div class="pro_price clearfix">
+            	<span>￥5000.00</span><del>￥5200.00</del>
+            </div>
+            <div class="pro_size">
+            	<p class="clearfix"><span class="float_l" style="padding-left:3px;">尺码：</span><a class="float_r" href="#size" style="color:#333;" data-transition="slide">尺码详情</a></p>
+                <ul class="col_s clearfix">
+                	<li class="s_cur"><span>XL</span></li><li><span>XXL</span></li>
+                </ul>
+            </div>
+            <div class="cash_btn">
+                <button class="button_red">加入购物袋</button>
+            </div>
+            
+            <div class="detail">
+            	<p class="xq">商品信息</p>
+                <div class="detail_n">
+                    <table width="100%">
+                        <colgroup>
+                            <col width="60px" />
+                        </colgroup>
+                        <tr><th>品　　牌：</th><td><a href="#" title="{$p["brand_ename"]} {$p["brand_name"]}" target="_blank" style="color:#8e0c3a;">{$p["brand_ename"]} {$p["brand_name"]}</a></td></tr>
+                        <tr><th>款　　式：</th><td>{$p["pro_name"]}</td></tr>
+                        <tr><th>编辑推荐：</th><td>{$p.describe|nl2br}</td></tr>
+                        <if condition="$p['sku'] neq ''">
+                        <tr><th>美西编号：</th><td>{$p["sku"]}</td></tr>
+                        </if>
+                        <if condition="$p['item_number'] neq ''">
+                        <tr><th>货　　号：</th><td>{$p["item_number"]}</td></tr>
+                        </if>
+                        <if condition="$sizeStr neq ''">
+                        <tr><th>尺　　寸：</th><td>{$sizeStr}</td></tr>
+                        </if>
+                        <if condition="$p['material'] neq ''">
+                        <tr><th>材　　质：</th><td>{$p['material']}</td></tr>
+                        </if>
+                        <if condition="$p['color_des'] neq ''">
+                        <tr><th>颜　　色：</th><td>{$p['color_des']}</td></tr>
+                        </if>
+                        <if condition="$p['area'] neq ''">
+                        <tr><th>产　　地：</th><td>{$p['area']}</td></tr>
+                        </if>
+                        <if condition="$p['internal'] neq ''">
+                        <tr><th>商品内部：</th><td>{$p['internal']}</td></tr>
+                        </if>
+                        <if condition="$p['external'] neq ''">
+                        <tr><th>商品外部：</th><td>{$p['external']}</td></tr>
+                        </if>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="footer" data-role="footer">
+		<div data-role="navbar">
+            <ul>
+                <li><a class="f_index" href="#index" data-transition="none">首页</a></li>
+                <li><a class="f_brands" href="#brands" data-transition="none">品牌</a></li>
+                <li><a class="f_cart" href="#cart" data-transition="none">购物袋</a></li>
+                <li><a class="f_account" href="#account" data-transition="none">我的优物</a></li>
+            </ul>
+		</div>
+    </div>
+</div>
+
+<!--尺码详情-->
+<div data-role="page" id="size">
+	<div class="header" data-role="header">
+    	<a class="header_l" href="index.html" data-rel="back">返回</a>
+    	<h1 class="header_tit">Dolce&Gabbana 杜嘉班纳</h1>
+        <a class="header_r" href="javascript:void(0);">分享</a>
+    </div>
+    
+    <div class="main" data-role="content">
+    	<div class="pad10">
+        	<div class="proSize relative">
+                <img src="http://img.meicicdn.com/size/48.jpg">
+                <div style="top:78px; left:130px;" class="pro_size_a">腰围 </div>
+                <div style="top:146px; left:30px;" class="pro_size_a">裙<br>长<br></div>
+                <div style="top:142px; left:130px;" class="pro_size_a">臀围 </div>
+            </div>
+            <div class="pro_size_d">
+            	<div class="pro_size_s">
+                    <div class="float_l">40码</div>
+                    <div class="float_r clearfix">
+                        <div>腰围：70</div><div>臀围：20</div><div>裙长：60</div>
+                    </div>
+                    <div class="clear"></div>                
+                </div>
+                <div style="text-align:right; padding:0 10px 5px 10px; font-size:12px;">*测量单位为cm</div>
+                <div align="center" class="b_pro">
+                    <button class="button_gray" onclick="history.back();">返回商品页</button>
+                </div>
+            </div>
+ 		</div>
+    </div>
+    <div class="footer" data-role="footer">
+		<div data-role="navbar">
+            <ul>
+                <li><a class="f_index" href="#index" data-transition="none">首页</a></li>
+                <li><a class="f_brands" href="#brands" data-transition="none">品牌</a></li>
+                <li><a class="f_cart" href="#cart" data-transition="none">购物袋</a></li>
+                <li><a class="f_account" href="#account" data-transition="none">我的优物</a></li>
+            </ul>
+		</div>
+    </div>
+</div>
+
+
+
+<!--购物袋-->
+<div data-role="page" id="cart">
+	<div class="header" data-role="header">
+    	<h1 class="header_tit">购物袋</h1>
+        <a class="header_r" href="javascript:void(0);">编辑</a>
+    </div>
+    
+    <div class="main" data-role="content">
+    	<div class="pad10">
+        	<!--有商品-->
+        	<div class="y">
+                <div class="cart_list">
+                    <ul>
+                        <li>
+                            <a class="cart_list_m clearfix" href="#" title="">
+                                <div class="float_l"><img src="http://img.meicicdn.com/p/24/023883/s-023883-1.jpg" /></div>
+                                <div class="cart_list_n float_l">
+                                    <p>ANDREW McDONALD<br />玫瑰印花做旧牛皮女士手包</p>
+                                    <p>特惠价：￥5400.00</p>
+                                </div>
+                            </a>
+                            <a class="cart_del" href="javascript:void(0);" title="删除"><span>删除</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cash_c">
+                    <table width="100%">
+                        <colgroup>
+                            <col width="20%" />
+                        </colgroup>
+                        <tr>
+                            <th>共：3件</th><td>总计：￥15000.00元</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="cash_btn">
+                    <button class="button_red">立即结算</button>
+                </div>
+        	</div>
+            <!--无商品-->
+            <!--<div class="n">
+            	<div class="n_lst">
+                	<img src="img/cart_n.png" /><br />您的购物袋目前暂无商品
+                </div>
+            </div>-->
+        </div>
+    </div>
+    <div class="footer" data-role="footer">
+		<div data-role="navbar">
+            <ul>
+                <li><a class="f_index" href="#index" data-transition="none">首页</a></li>
+                <li><a class="f_brands" href="#brands" data-transition="none">品牌</a></li>
+                <li><a class="f_cart" href="#cart" data-transition="none">购物袋</a></li>
+                <li><a class="f_account" href="#account" data-transition="none">我的优物</a></li>
+            </ul>
+		</div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

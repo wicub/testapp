@@ -1,0 +1,136 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Basics */
+html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,menu,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}
+pre,i,code,address,caption,cite,code,em,strong,th,tt{font-size:100%;font-weight:normal;font-style:normal;}
+p{white-space:normal;word-break:break-all;word-wrap:break-word;}
+table{border-collapse:collapse;border-spacing:0;}
+table th,table td{word-wrap:break-word;overflow:hidden;}
+ul,ol,menu{list-style:none outside none;}
+fieldset,img{border:none;}
+input{vertical-align:middle;}
+button {cursor:pointer;}
+textarea{vertical-align:middle;resize:both;}
+h1{font-size:18px;}
+h2{font-size:16px;}
+h3{font-size:14px;}
+h4{font-size:12px;}
+
+/* apply */
+.clearfix:after {display:block; clear:both; content:"."; visibility:hidden; height:0;}
+*html .clearfix {height:1%;}
+*:first-child+html .clearfix {height:1%;}
+.float_l {float:left; display:inline;}
+.float_r {float:right; display:inline;}
+.hide_a {overflow:hidden; display:block; font-size:0;}
+.absolute {position:absolute;}
+.relative {position:relative;}
+.clear {clear:both;}
+a {text-decoration:none;}
+
+
+/*header*/
+body {background:#eee; font-family:Arial, Helvetica, sans-serif;}
+.header {height:45px; background:#000; position:fixed; width:100%; box-shadow:0 1px 5px #333; z-index:100;}
+.header .logo {margin:10px 0 0 10px;}
+.head_search {background:#fff; border-radius:5px; height:34px; margin:5px 5px 0 0;}
+.head_search div {float:left; display:inline;}
+.ui-input-search, div.ui-input-text {margin:0; padding:0; width:120px;}
+.ui-header .ui-btn-inner {padding:0; margin:0; width:34px; height:34px;}
+.head_search_ico {width:34px; height:34px; background:url(http://img.meicicdn.com/skin/df/wap/search.png) 3px 3px no-repeat; opacity:1;}
+
+/*index*/
+.main_index {padding:50px 5px; width:310px; margin:0 auto;}
+.home_large {overflow:hidden; margin-bottom:5px;}
+.home_large a {display:block;}
+
+/*footer*/
+.footer {position:fixed; bottom:0; width:100%; height:45px; background:#000; z-index:100;}
+.footer ul li {height:45px;}
+.footer ul li a {color:#fff; text-decoration:none; padding-top:20px;}
+.ui-navbar li .ui-btn .ui-btn-inner {padding:0;}
+.ui-panel-animate.ui-panel-content-wrap > .ui-header {position:fixed;}
+
+/*list*/
+.main {padding:50px 0 50px 0; width:100%;}
+.pad10 {padding:0 10px;}
+.header_l, .header_r {color:#fff;}
+.header_l .ui-btn-inner, .header_r .ui-btn-inner {width:auto; height:auto; padding:12px;}
+.header .header_tit {color:#fff; margin:13px auto 0; width:250px; word-break:normal\0; word-wrap:normal\0; overflow:hidden; white-space:nowrap; -o-text-overflow: ellipsis; text-overflow: ellipsis;}
+#right-panel {background:#fff;}
+.filter { padding:5px 10px;}
+.filter a {display:block; width:140px; height:25px; padding-top:5px; background:#fff; color:#333; border-radius:5px; text-align:center;}
+.filter .fil_time {}
+.pro_list {padding:20px 10px;}
+.pro_list li {float:left; display:inline; width:50%; text-align:center; margin-bottom:10px;}
+.pro_list li .pro_img {display:block;}
+.pro_list li .pro_b_p {color:#333; height:45px;}
+
+
+
+/*cart*/
+.cart_list li {border-bottom:1px solid #999; position:relative;}
+.cart_list_m {display:block; padding:10px 0; color:#333;}
+.cart_list_n {margin-left:10px;}
+.cart_del {position:absolute; right:0; top:0; display:none; width:0; text-align:center; background:#f00; color:#fff; height:100%;}
+.cart_del span {line-height:5; white-space:nowrap;}
+#right-panel .ui-panel-inner {padding:0;}
+.cash_c {padding:10px 0;}
+.cash_c th {text-align:left;}
+.cash_c td {text-align:right;}
+.cash_btn .ui-btn , .b_pro .ui-btn {margin:0;}
+.cash_btn .ui-btn-text {color:#fff; z-index:3;}
+.b_pro .ui-btn-text {z-index:3;}
+.button_red {width:100%; background:#db0000; color:#fff; border-radius:5px; opacity:1;}
+.button_gray {width:100%; background:#ccc; color:#fff; border-radius:5px; opacity:1;}
+
+/*product*/
+.n_lst {text-align:center; padding:100px 0; line-height:1.8;}
+.pro_des {text-align:center; padding:10px 0;}
+#slides {width:250px; height:320px; margin:0 auto; position:relative;}
+.slidesjs-previous, .slidesjs-next {font-size:0;}
+#slides .slidesjs-previous {position:absolute; width:30px; height:300px; z-index:5; left:-30px; top:0; background:url(http://img.meicicdn.com/skin/df/wap/l.png) center center no-repeat;}
+#slides .slidesjs-next {position:absolute; width:30px; height:300px; z-index:5; right:-30px; top:0; background:url(http://img.meicicdn.com/skin/df/wap/r.png) center center no-repeat;}
+#slides_s .slidesjs-previous, #slides_s .slidesjs-next {position:absolute; width:30px; height:170px; z-index:5; left:0; top:0; background:url(http://img.meicicdn.com/skin/df/wap/l.png) center center no-repeat; display:none;}
+#slides_s .slidesjs-next {background:url(http://img.meicicdn.com/skin/df/wap/r.png) center center no-repeat;}
+#slides_s .slidesjs-pagination {width:310px; margin:1px auto; text-align:center; position:absolute; top:150px; z-index:11;}
+#slides .slidesjs-pagination {width:200px; margin:10px auto 0; text-align:center;}
+.slidesjs-pagination li {display:inline-block; margin:0 5px;}
+.slidesjs-pagination li a {display:block; width:7px; height:7px; background:url(http://img.meicicdn.com/skin/df/main_tab_dot.png) no-repeat; font-size:0;}
+.slidesjs-pagination li a.active {background-position:0 -7px;}
+
+.pro_price span, .pro_price del {display:block; width:50%; text-align:center; float:left; display:inline;}
+.pro_size {margin-bottom:20px;}
+.pro_size span {color:#db0000;}
+.pro_size {font-size:12px; margin-top:10px; text-align:left;}
+.col_s {padding-top:10px;}
+.col_s li {float:left; width:46px; height:22px; background:#fff; border:1px solid #eee; text-align:center; margin:0 6px;}
+.col_s li span {display:block; border:1px solid #ccc; padding:3px 0 2px;}
+.col_s li.s_cur {border:1px solid #d60000;}
+.col_s li.s_cur span {border:1px solid #d60000;}
+.detail {text-align:left; padding:10px 0; font-size:12px;}
+.xq {padding:3px 5px; height:18px; background:#eee;}
+.detail_n {padding:5px;}
+.detail_n td, .detail_n th {vertical-align:top;}
+
+/*size*/
+.proSize {width:300px; margin:10px auto 0; font-size:12px;}
+.pro_size_a {position:absolute;}
+.pro_size_s {padding:5px 0; margin-top:5px; font-size:12px;}
+.pro_size_s .float_l {width:20%; text-align:center;}
+.pro_size_s .float_r {width:80%;}
+.pro_size_s .float_r div {float:left; width:33%;}
+
+
+
+
+
+
+
+
+
+
+
+
+
